@@ -1,0 +1,10 @@
+.btn_prop {
+    border: 2px solid yellow;
+    color: white;
+    background-color: transparent;
+}
+
+.btn_prop:hover {
+    background-color: yellow;
+    color: black;
+}

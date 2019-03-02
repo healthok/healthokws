@@ -1,0 +1,40 @@
+nav {
+    background-color: #253746;
+}
+
+.carouesl {
+    max-height: your size;
+    max-width: your width;
+    overflow: hidden;
+}
+
+.carousel-inner > .item > img {
+    margin: 0 auto;
+}
+
+.img_body {
+    height: 260px;
+}
+
+.btn_prop {
+    border: 2px solid yellow;
+    color: white;
+    background-color: transparent;
+}
+
+.btn_prop:hover {
+    background-color: yellow;
+    color: black;
+}
+
+.mission_img {
+    background: url(../image/our-mission.jpg) no-repeat center center;
+    -webkit-background-size: cover;
+    background-size: cover;
+}
+
+.yellow_btn {
+    border: 2px solid yellow;
+    background-color: transparent;
+    color: white;
+}

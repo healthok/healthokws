@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.12/css/all.css" integrity="sha384-G0fIWCsCzJIMAVNQPfjH08cyYaUtMwjJwqiRKxxE/rx96Uroj1BtIQ6MLJuheaO9" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
+    <link rel="stylesheet" href="./css/home.css">
+    <link rel="stylesheet" href="./css/services.css">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="app/doctor.js"></script>
+    <script src="app/controllers/doctor.js"></script>
+</head>
+
+<body ng-app="indexApp">
+    <nav class="nav navbar navbar-expand-lg col-lg-12 navbar-light">
+        <a class="navbar-brand text-white" href="./index.html">
+            <img src="image/healthok_logo.png" width="130" alt="">
+        </a>
+        <button class="navbar-toggler bg-light" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+         </button>
+
+        <div class="collapse col  navbar-collapse " id="navbarSupportedContent">
+            <ul class="nav navbar-nav col justify-content-start">
+                <li class="nav-item active col-lg-2">
+                    <a class="nav-link text-white text-uppercase text-center" href="index.html">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item col-lg-2">
+                    <a class="nav-link text-upppercase text-white text-center" href="./mission.html">MISSION</a>
+                </li>
+                <li class="nav-item col-lg-2">
+                    <a class="nav-link text-upppercase text-white text-center" href="./projects.html">PROJECTS</a>
+                </li>
+                <li class="nav-item col-lg-2 d-block">
+                    <a class="nav-link text-upppercase text-white text-center" href="about.html">ABOUT US</a>
+                </li>
+                <li class="nav-item col-lg-2">
+                    <a class="nav-link text-upppercase text-white text-center" href="ask.html">ASK DOC</a>
+                </li>
+                <li class="nav-item col-lg-2">
+                    <a class="nav-link text-upppercase text-white text-center" href="services.html">SERVICES</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class=" container mt-5 mb-5 p-3 " style="border:3px solid #253746;background ">
+        <h3 class="text-uppercase "><i class="fas fa-hospital-symbol" style="font-size: 2.2rem;padding-top:"></i>&nbsp;&nbsp;Ask Questions</h3>
+    </div>
+    <div class="container mt-5 mb-5 p-3 " style="border:3px solid #253746;background-color:#253746" ng-controller="askController">
+        <form ng-submit="askSubmit(params);">
+            <div class="form-group col-lg-4 ">
+                <label for=""></label>
+                <select name=" " id=" " class="form-control " required ng-model="params.selectedOption">
+                    <option ng-repeat="x in category" value="{{x.model}}">{{x.model}}</option>
+                </select>
+            </div>
+            <div class="form-group col-lg-8 ">
+                <div class="row ">
+                    <div class="col-lg-6 col-sm-12 col-xs-12 mb-3 ">
+                        <input type="text " class="form-control form-inline" placeholder="Enter Your Full Name" required ng-model="params.username">
+                    </div>
+                </div>
+                <div class="row ">
+                    <div class="col-lg-6 col-sm-12 col-xs-12 mb-3 ">
+                        <input type="email" class="form-control form-inline" placeholder="Enter Your Email" required ng-model="params.useremail">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-8 col-sm-12 col-xs-12 mb-3 ">
+                        <textarea name="" id="" cols="30" rows="4" class="form-control" placeholder="Enter Your Query here..." ng-model="params.question"></textarea>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-4 col-sm-12 col-xs-12 ">
+                        <button type="submit " class="btn btn_prop ">Ask Question</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="container mt-5 p-3 " style="border:3px solid #253746; ">
+        <h3 class="text-uppercase "><i class="fas fa-hospital-symbol" style="font-size: 2.2rem;padding-top:"></i>&nbsp;&nbsp;FREQUENTLY ASKED QUESTIONS</h3>
+    </div>
+
+    <div class="container mt-5 p-3 " style="border:3px solid #253746;background-color: #253746 " ng-controller="responseController">
+        <div id="accordion">
+            <div class="card mb-5" style="background-color: #253746;border-bottom: 2px solid yellow" ng-repeat="x in comments">
+                <div class="card-header col-lg-12 col-sm-12 col-xs-12" id="headingOne">
+                    <h5 class="text-white mb-0 question" style="text-decoration: none;font-weight: bold;cursor: pointer" ng-click="showResponse($index)">
+                        {{$index+1}}. <br> <br>{{x.comment}}
+                    </h5>
+                </div>
+                <div ng-if="isVisible && $index==foo">
+                    <div class="card-body text-white">
+                        <p class="text-justify" ng-repeat="y in x.commmentResponse">
+                            {{y.comment}}
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container mb-5 p-3 " style="border:3px solid #253746;background-color:#253746" ng-controller="responseController">
+        <form ng-submit="responseSubmit(params);">
+            <div class="form-group col-lg-8 ">
+                <p style="font-size: 1.3rem;color: white">Please Select Commect Number to Resonse </p>
+                <div class="row ">
+
+                    <div class="col-lg-4 col-sm-12 col-xs-12 mb-3 ">
+
+                        <select name=" " id=" " class="form-control " required ng-model="params.selectedOption">
+                    <option ng-repeat="n in [].constructor(25) track by $index">{{$index}}</option>
+                </select>
+                    </div>
+                    <div class="col-lg-4 col-sm-12 col-xs-12 mb-3 ">
+                        <input type="text " class="form-control form-inline" placeholder="Enter Your Full Name" required ng-model="params.username">
+                    </div>
+                    <div class="col-lg-4 col-sm-12 col-xs-12 mb-3 ">
+                        <input type="email" class="form-control form-inline" placeholder="Enter Your Email" required ng-model="params.useremail">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-8 col-sm-12 col-xs-12 mb-3 ">
+                        <textarea name="" id="" cols="30" rows="4" class="form-control" placeholder="Enter Your response here..." ng-model="params.question"></textarea>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-4 col-sm-12 col-xs-12 ">
+                        <button type="submit " class="btn btn_prop ">Give Reply</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="container-fluid mt-5 pb-5" style="background-color: #253746;border-top: 10px solid yellow">
+        <script src="app/doctor.js"></script>
+        <script src="app/controllers/doctor.js"></script>
+        <div class="container mt-5">
+            <div class="container mt-5 mb-5  p-3" style="border:3px solid white;">
+                <h3 class="text-white"><i class="fas fa-hospital-symbol" style="font-size: 2.2rem;padding-top:"></i>&nbsp;&nbsp;KEEP IN CONTACT</h3>
+            </div>
+            <div class="row" ng-controller="formController">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <form ng-submit="formSubmit(params);" class="col-lg-12 col-md-12 form-inline my-2 my-lg-0">
+                        <div class="form-group col-lg-12">
+                            <select name=" " id=" " class="form-control m-2" ng-model="params.selectedOption" required>
+                                <option ng-repeat="x in category"  value="{{x.model}}">{{x.model}}</option>
+                            </select>
+                            <input class="m-2 col-lg-6 col-md-8 form-control" name="dname" type="search" placeholder="Enter Doctor name" ng-model="params.dname" required>
+                            <button type="submit" class="m-2 btn form-control  btn_prop">Search</button>
+                        </div>
+
+                    </form>
+                </div>
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-white p-4 mt-5">
+                    <div class="row">
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 mb-5">
+                            <h4>Become the part of Solution</h4>
+                            <a href="donate.html"><button type="button" class="mt-2 btn btn-primary">Donate Now</button></a>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                            <h4>Follow us On :</h4>
+                            <ul style="list-style-type: none;padding-left: 0px">
+                                <li class="d-inline" style="font-size: 35px;"><a href="https://www.facebook.com/healthokindia/" class="text-white"><i class="fab fa-facebook-square"></i></a></li>
+                                <li class="d-inline ml-2" style="font-size: 35px;"><a href="https://twitter.com/healthokgkp" class="text-white"><i class="fab fa-twitter-square"></i></a></li>
+                                <li class="d-inline ml-2" style="font-size: 35px;"><a href="https://www.linkedin.com/in/healthok/" class="text-white"><i class="fab fa-linkedin"></i></a></li>
+                                <li class="d-inline ml-2" style="font-size: 35px;"><a href="https://api.whatsapp.com/send?phone=9971931767" class="text-white"><i class="fab fa-whatsapp"></i></a></li>
+                                <li class="d-inline ml-2" style="font-size: 35px;"><a href="mailto:care@health-ok.in" class="text-white"><i class="fas fa-envelope"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="row" ng-show="doctors">
+                        <div class="col-lg-12 col-ms-12 col-sm-12 col-xs-12 card mt-3" style="margin: 0px;padding: 0px; background-color: " ng-repeat="x in doctor">
+                            <div class="card-header bg-primary" style="color: ">
+                                <h3 class="d-inline">{{x.firstName + " "+x.lastName}}</h3> (
+                                <p class="d-inline">{{x.degree}}</p>)
+                            </div>
+                            <div class="card-body" style="color: black">
+                                <h5>{{x.clinicName}}</h5>
+                                <p>{{x.addressLine1}}</p>
+                                <i class="fa fa-phone"> {{x.doctorPhoneNumbers[0].phoneNumber}} </i> <br>
+                                <div class="row pt-3 pl-3">
+                                    <button class="btn btn-sm bg-primary text-white" ng-click="appointmentShow(x.doctorId)" ng-if="isVisibleButton">Make an Appointment</button>
+                                </div>
+                            </div>
+                            <div class="card-footer" style="color: black" ng-if="isVisible && id==x.doctorId">
+                                <form ng-submit="appointDoctor(appoint)">
+                                    <div>
+                                        <div class="form-group mb-3 mt-3">
+                                            <input type="text" name="" id="" class="form-control" placeholder="First Name" ng-model="appoint.firstname" required>
+                                        </div>
+                                        <div class="form-group mb-3 mt-3">
+                                            <input type="text" name="" id="" class="form-control" placeholder="Last Name" ng-model="appoint.lastname" required>
+                                        </div>
+                                        <div class="form-group mb-3 mt-3">
+                                            <input type="text" name="" id="" class="form-control" placeholder="Mobile Number" ng-model="appoint.mobile" required>
+                                        </div>
+                                        <div class="form-group mb-3 mt-3">
+                                            <input type="date" name="" id="" class="form-control" placeholder="Enter Appointment Date" ng-model="appoint.appointDate" required>
+                                        </div>
+                                        <input type="hidden" ng-model="x.doctorId">
+                                    </div>
+                                    <button type="submit" class="btn btn-sm bg-primary text-white">Book Appointment</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js " integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo " crossorigin="anonymous "></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js " integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ " crossorigin="anonymous "></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js " integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm " crossorigin="anonymous "></script>
+
+</body>
+
+</html>
