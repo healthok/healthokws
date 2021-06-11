@@ -24,3 +24,16 @@ nav .collapse ul li a:hover {
     background-color: yellow;
     color: black;
 }
+.numberdiv
+{
+	width:100%;
+}
+
+.numberimage
+{
+	width:50%;
+	height:auto;
+	margin-left:25%;
+	margin-top:5px;
+	margin-bottom:5px
+}
