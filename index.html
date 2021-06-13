@@ -10,9 +10,39 @@
     <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
     <link rel="stylesheet" href="./css/home.css">
     <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/form.css">
+    <style>
+        .hidden-class
+        {
+            display: none;
+            width: 50%;
+            padding: .375rem .75rem;
+            font-size: 1rem;
+            line-height: 1.5;
+            color: #495057;
+            border: 0px solid #ced4da;
+            border-radius: .25rem;
+            transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+            margin: .5rem!important;
+        }
+    </style>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
     <script src="app/doctor.js"></script>
     <script src="app/controllers/doctor.js"></script>
+    <script>
+        function MyFunction() {
+            var x = document.getElementById("myDIV");
+            if (x.style.display === "none") {
+                x.style.display = "block";
+            } 
+            else {
+                x.style.display = "none";
+            }
+        }
+    </script>
+    <script src="https://smtpjs.com/v3/smtp.js"></script>
+    <script type="text/javascript" src="app/emailScript.js"></script>
+
 </head>
 
 <body ng-app="indexApp">
@@ -32,9 +62,9 @@
                 <li class="nav-item col-lg-2">
                     <a class="nav-link text-upppercase text-white text-center" href="./mission.html">MISSION</a>
                 </li>
-                <!-- <li class="nav-item col-lg-2">
+                 <li class="nav-item col-lg-2">
                     <a class="nav-link text-upppercase text-white text-center" href="./projects.html">PROJECTS</a>
-                </li> -->
+                </li> 
                 <li class="nav-item col-lg-2 d-block">
                     <a class="nav-link text-upppercase text-white text-center" href="about.html">ABOUT US</a>
                 </li>
@@ -164,7 +194,7 @@
 <div class='pm-button'><a href='https://www.payumoney.com/paybypayumoney/#/4C2445F38CD050D05FF490359178C684'><button type="button" class="btn btn_prop" style="border: 2px solid yellow">DONATE</button></a></div> 
                             </div>
                             <div class="col text-right">
-                                <!-- <a href="./healthcamps.html"><button type="button" class="btn btn_prop" style="border: 2px solid yellow">KNOW MORE</button></a> -->
+                                 <a href="./healthcamps.html"><button type="button" class="btn btn_prop" style="border: 2px solid yellow">KNOW MORE</button></a> 
                             </div>
                         </div>
                     </div>
@@ -187,7 +217,7 @@
 <div class='pm-button'><a href='https://www.payumoney.com/paybypayumoney/#/D1DFE42BB81DD14E23967B10ED29A2DD'><button type="button" class="btn btn_prop" style="border: 2px solid yellow">DONATE</button></a></div> 
                             </div>
                             <div class="col text-right">
-                               <!--  <a href="schoolhealth.html"><button type="button" class="btn btn_prop" style="border: 2px solid yellow">KNOW MORE</button></a> -->
+                                 <a href="schoolhealth.html"><button type="button" class="btn btn_prop" style="border: 2px solid yellow">KNOW MORE</button></a> 
                             </div>
                         </div>
                     </div>
@@ -217,7 +247,7 @@
 <div class='pm-button'><a href='https://www.payumoney.com/paybypayumoney/#/5E3FCDEE2E8465FE0738908178A9FB54'><button type="button" class="btn btn_prop" style="border: 2px solid yellow">DONATE</button></a></div> 
                             </div>
                             <div class="col text-right">
-                               <!--  <a href="./healthcamps.html"><button type="button" class="btn btn_prop" style="border: 2px solid yellow">KNOW MORE</button></a> -->
+                                 <a href="./healthcamps.html"><button type="button" class="btn btn_prop" style="border: 2px solid yellow">KNOW MORE</button></a> 
                             </div>
                         </div>
                     </div>
@@ -241,7 +271,7 @@
 <div class='pm-button'><a href='https://www.payumoney.com/paybypayumoney/#/66366A38863B99C726E2B92C48B8CA5C'><button type="button" class="btn btn_prop" style="border: 2px solid yellow">DONATE</button></a></div> 
                             </div>
                             <div class="col text-right">
-                               <!--  <a href="schoolhealth.html"><button type="button" class="btn btn_prop" style="border: 2px solid yellow">KNOW MORE</button></a> -->
+                                 <a href="schoolhealth.html"><button type="button" class="btn btn_prop" style="border: 2px solid yellow">KNOW MORE</button></a> 
                             </div>
                         </div>
                     </div>
@@ -315,11 +345,55 @@
 
                     </form>
                 </div>
+                <!--Contact Us Section Started-->
+                <div class="container-fluid mt-5 pb-5" style="background-color: #253746;border-top: 10px ">
+                <script src="app/doctor.js"></script>
+                <script src="app/controllers/doctor.js"></script>
+                <div class="container mt-5">
+                    <div class="container mt-5 mb-5  p-3" style="border:3px solid white;">
+                        <h3 class="text-white"><i class="fas fa-hospital-symbol" style="font-size: 2.2rem;padding-top:"></i>&nbsp;&nbsp;Contact Us</h3>
+                </div>
+                <script src="app/emailScript.js"></script>
+                <div class="row" ng-controller="formController">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <form ng-submit="formSubmit(params);" class="col-lg-12 col-md-12 form-inline my-2 my-lg-0">
+                        <input type="text" id="name" class="form-control-m-211" placeholder="Your Name" padding:10px>
+                    <input type="email" id="email" class="form-control-m-212" placeholder="Your Email">
+                    <input type="phone" id="phone" class="form-control-m-213" placeholder="Phone Number">
+                    <textarea type="message" id="message" class="form-control-m-214" placeholder="Message"></textarea>
+                    <input type="button" class="m-2 btn form-control  btn_prop" value="Send Email"  onclick="sendEmail()" />
+                    <!--<button class="m-2 btn form-control  btn_prop">Send</button>-->
+
+                    </form>
+                </div>
+                <!-- Contact Us Section Ended-->
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-white p-4 mt-5">
                     <div class="row">
                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 mb-5">
                             <h4>Become the part of Solution</h4>
                             <a href="donate.html"><button type="button" class="mt-2 btn btn-primary">Donate Now</button></a>
+                             <!--Volunteer Registration Form Strated-->
+                            <button type="button" class="mt-2 btn btn-primary" onclick="MyFunction()">Volunteer Registration</button>
+                            <form ng-submit="formSubmit(params);" class="col-lg-12 col-md-12 form-inline my-2 my-lg-0">
+                            <div id="myDIV" class="hidden-class">
+                                <input type="text" id="name" class="form-control-m-215" placeholder="Full Name">
+                                <input type="email" id="email" class="form-control-m-216" placeholder="Your Email Address">
+                                <input type="phone" id="phone" class="form-control-m-217" placeholder="Phone Number">
+                                <select name=OptionSelection id="Volunteering-Option" class="form-control-m-218" placeholder="Volunteering Option">
+                                    <option disabled hidden selected >Volunteering Option</option>
+                                    <option value="Option1">Doctor</option>
+                                    <option value="Option2">Helpline</option>
+                                    <option value="Option3">Health Camps</option>
+                                    <option value="Option4">Healthcare Professional</option>
+                                    <option value="Option5">School Health Program</option>
+                                </select>
+                                <textarea type="details" id="details" class="form-control-m-219" placeholder="Details"></textarea>
+                                <!--<button class="m-2 btn form-control  btn_prop">Submit</button>-->
+                                <input type="button" class="m-2 btn form-control  btn_prop" value="Submit"  onclick="sendVolunteerEmail()" />
+                            </form>
+                            </div>
+                        
+                            <!--Volunteer Registration Form Ended-->
                         </div>
                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                             <h4>Follow us On :</h4>
