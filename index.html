@@ -331,10 +331,13 @@
         <script src="app/doctor.js"></script>
         <script src="app/controllers/doctor.js"></script>
         <div class="container mt-5">
+		<!--
             <div class="container mt-5 mb-5  p-3" style="border:3px solid white;">
                 <h3 class="text-white"><i class="fas fa-hospital-symbol" style="font-size: 2.2rem;padding-top:"></i>&nbsp;&nbsp;KEEP IN CONTACT</h3>
             </div>
+
             <div class="row" ng-controller="formController">
+			
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <form ng-submit="formSubmit(params);" class="col-lg-12 col-md-12 form-inline my-2 my-lg-0">
                         <div class="form-group col-lg-12">
@@ -347,6 +350,8 @@
 
                     </form>
                 </div>
+			</div>
+			-->
                 <!--Contact Us Section Started-->
                 <div class="container-fluid mt-5 pb-5" style="background-color: #253746;border-top: 10px ">
                 <script src="app/doctor.js"></script>
@@ -373,9 +378,10 @@
                     <div class="row">
                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 mb-5">
                             <h4>Become the part of Solution</h4>
-                            <a href="donate.html"><button type="button" class="mt-2 btn btn-primary">Donate Now</button></a>
+							<div class='pm-button'><a href='https://www.payumoney.com/paybypayumoney/#/4C2445F38CD050D05FF490359178C684'><button type="button" class="btn btn_prop" style="border: 2px solid yellow">DONATE</button></a>
                              <!--Volunteer Registration Form Strated-->
-                            <button type="button" class="mt-2 btn btn-primary" onclick="MyFunction()">Volunteer Registration</button>
+                            <button type="button" class="btn btn_prop"  onclick="MyFunction()">Volunteer Registration</button>
+							</div> 
                             <form ng-submit="formSubmit(params);" class="col-lg-12 col-md-12 form-inline my-2 my-lg-0">
                             <div id="myDIV" class="hidden-class">
                                 <input type="text" id="name" class="form-control-m-215" placeholder="Full Name">
@@ -445,7 +451,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            
 
         </div>
     </div>
