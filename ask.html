@@ -14,6 +14,9 @@
     <link rel="stylesheet" href="css/style.css">
     <script src="app/doctor.js"></script>
     <script src="app/controllers/doctor.js"></script>
+    <script src="https://smtpjs.com/v3/smtp.js"></script>
+    <script type="text/javascript" src="./app/emailScript.js"></script>
+    	
 </head>
 
 <body ng-app="indexApp">
@@ -55,30 +58,42 @@
     <div class="container mt-5 mb-5 p-3 " style="border:3px solid #253746;background-color:#253746" ng-controller="askController">
         <form ng-submit="askSubmit(params);">
             <div class="form-group col-lg-4 ">
-                <label for=""></label>
-                <select name=" " id=" " class="form-control " required ng-model="params.selectedOption">
+                <label for="SELECT CATEGORY"></label>
+               <!-- <select name=" " id=" " class="form-control " required ng-model="params.selectedOption">
                     <option ng-repeat="x in category" value="{{x.model}}">{{x.model}}</option>
-                </select>
+                </select>-->
+                <!--New Dropdown-->
+                <select name=OptionSelection id="Category-Option" class="form-control" required ng-model="params.selectedOption" placeholder="SELECT CATEGORY">
+            	<option disabled hidden selected ></option>
+            	<option value="GENERAL INFORMATION">GENERAL INFORMATION</option>
+            	<option value="ABOUT TREATMENT">ABOUT TREATMENT</option>
+            	<option value="ABOUT HEALTH">ABOUT HEALTH</option>
+            	<option value="ABOUT CHILD HEALTH">ABOUT CHILD HEALTH</option>
+            	<option value="ABOUT FAMILY">ABOUT FAMILY</option>
+            	<option value="ABOUT MEDICINE">ABOUT MEDICINE</option>
+            	<option value="ABOUT DOCTOR">ABOUT DOCTOR</option>
+          </select>
             </div>
             <div class="form-group col-lg-8 ">
                 <div class="row ">
                     <div class="col-lg-6 col-sm-12 col-xs-12 mb-3 ">
-                        <input type="text " class="form-control form-inline" placeholder="Enter Your Full Name" required ng-model="params.username">
+                        <input type="text " class="form-control form-inline" id="name" placeholder="Enter Your Full Name" required ng-model="params.username">
                     </div>
                 </div>
                 <div class="row ">
                     <div class="col-lg-6 col-sm-12 col-xs-12 mb-3 ">
-                        <input type="email" class="form-control form-inline" placeholder="Enter Your Email" required ng-model="params.useremail">
+                        <input type="email" class="form-control form-inline" id="email" placeholder="Enter Your Email" required ng-model="params.useremail">
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-lg-8 col-sm-12 col-xs-12 mb-3 ">
-                        <textarea name="" id="" cols="30" rows="4" class="form-control" placeholder="Enter Your Query here..." ng-model="params.question"></textarea>
+                        <textarea name="" id="textmsg" cols="30" rows="4" class="form-control" placeholder="Enter Your Query here..." ng-model="params.question"></textarea>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-lg-4 col-sm-12 col-xs-12 ">
-                        <button type="submit " class="btn btn_prop ">Ask Question</button>
+                        <!--<button type="submit " class="btn btn_prop ">Ask Question</button>-->
+                        <input type="button" class="btn btn_prop " value="Ask Question"  onclick="sendAskQuestionEmail()" />
                     </div>
                 </div>
             </div>
