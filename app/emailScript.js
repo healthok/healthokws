@@ -26,8 +26,9 @@ function sendVolunteerEmail(){
     var email=document.querySelector('.form-control-m-216').value;
     var phone=document.querySelector('.form-control-m-217').value;
     var details=document.querySelector('.form-control-m-219').value;
-    var e = document.getElementById("Category-Option");
+    var e = document.getElementById("Volunteering-Option");
     var strUser = e.value;
+    
 
     Email.send({
     SecureToken: "b8908323-9876-4ca9-9c41-e13e8e4c569e",

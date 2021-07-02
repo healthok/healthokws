@@ -11,8 +11,37 @@
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
     <link rel="stylesheet" href="css/services.css">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="./css/form.css">
+    <style>
+        .hidden-class
+        {
+            display: none;
+            width: 50%;
+            padding: .375rem .75rem;
+            font-size: 1rem;
+            line-height: 1.5;
+            color: #495057;
+            border: 0px solid #ced4da;
+            border-radius: .25rem;
+            transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+            margin: .5rem!important;
+        }
+    </style>
+    <script>
+        function MyFunction() {
+            var x = document.getElementById("myDIV");
+            if (x.style.display === "none") {
+                x.style.display = "block";
+            } 
+            else {
+                x.style.display = "none";
+            }
+        }
+    </script>
     <script src="app/doctor.js"></script>
     <script src="app/controllers/doctor.js"></script>
+    <script src="https://smtpjs.com/v3/smtp.js"></script>
+    <script type="text/javascript" src="./app/emailScript.js"></script>
 
     <style>
         .nav {
@@ -110,13 +139,22 @@
             <div class="row" ng-controller="formController">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <form ng-submit="formSubmit(params);" class="col-lg-12 col-md-12 form-inline my-2 my-lg-0">
-                        <div class="form-group col-lg-12">
+                        <!--<div class="form-group col-lg-12">
                             <select name=" " id=" " class="form-control m-2"  ng-model="params.selectedOption" required>
                                 <option ng-repeat="x in category" value="{{x.model}}">{{x.model}}</option>
                             </select>
                             <input class="m-2 col-lg-6 col-md-8 form-control" name="dname" type="search" placeholder="Enter Doctor name" ng-model="params.dname" required>
                             <button type="submit" class="m-2 btn form-control  btn_prop">Search</button>
-                        </div>
+                        </div>-->
+                        <script src="app/emailScript.js"></script>
+                        <div class="row" ng-controller="formController">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                            <form ng-submit="formSubmit(params);" class="col-lg-12 col-md-12 form-inline my-2 my-lg-0">
+                                <input type="text" id="name" class="form-control-m-211" placeholder="Your Name" padding:10px>
+                                <input type="email" id="email" class="form-control-m-212" placeholder="Your Email">
+                                <input type="phone" id="phone" class="form-control-m-213" placeholder="Phone Number">
+                                <textarea type="message" id="message" class="form-control-m-214" placeholder="Message"></textarea>
+                                <input type="button" class="m-2 btn form-control  btn_prop" value="Send Email"  onclick="sendEmail()" />
 
                     </form>
                 </div>
@@ -125,7 +163,26 @@
                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 mb-5">
                             <h4>Become the part of Solution</h4>
                             <a href="donate.html"><button type="button" class="mt-2 btn btn-primary">Donate Now</button></a>
+                            <button type="button" class="mt-2 btn btn-primary"  onclick="MyFunction()">Volunteer Registration</button>
                         </div>
+                        <form ng-submit="formSubmit(params);" class="col-lg-12 col-md-12 form-inline my-2 my-lg-0">
+                            <div id="myDIV" class="hidden-class">
+                                <input type="text" id="name" class="form-control-m-215" placeholder="Full Name">
+                                <input type="email" id="email" class="form-control-m-216" placeholder="Your Email Address">
+                                <input type="phone" id="phone" class="form-control-m-217" placeholder="Phone Number">
+                                <select name=OptionSelection id="Volunteering-Option" class="form-control-m-218" placeholder="Volunteering Option">
+                                    <option disabled hidden selected >Volunteering Option</option>
+                                    <option value="Doctor">Doctor</option>
+                                    <option value="Helpline">Helpline</option>
+                                    <option value="Health Camps">Health Camps</option>
+                                    <option value="Healthcare Professional">Healthcare Professional</option>
+                                    <option value="School Health Program">School Health Program</option>
+                                </select>
+                                <textarea type="details" id="details" class="form-control-m-219" placeholder="Details"></textarea>
+                                <!--<button class="m-2 btn form-control  btn_prop">Submit</button>-->
+                                <input type="button" class="m-2 btn form-control  btn_prop" value="Submit"  onclick="sendVolunteerEmail()" />
+                            </form>
+                            </div>
                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                             <h4>Follow us On :</h4>
                             <ul style="list-style-type: none;padding-left: 0px">
